@@ -5,6 +5,8 @@ GET /shoes/:shoeId
 
 POST /shoes/:shoeId
 
+PATCH /shoes/:shoeId
+
 DELETE /shoes/:shoeId
 
 Parameters
