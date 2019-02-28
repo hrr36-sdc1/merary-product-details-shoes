@@ -1,5 +1,6 @@
 CRUD API Endpoints
 Product Details - Shoes
+
 GET /shoes/:shoeId
 
 POST /shoes/:shoeId
