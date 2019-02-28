@@ -59,22 +59,15 @@ app.get('/shoes/:shoeId', (req,res) => {
 })
 
 //patch one shoe by ID and increase review count by one
-app.patch('/shoes/:shoeID', (req, res) => {
-  Shoes.findOneAndUpdate({id: res.id}, { $inc: {review_count:1}}, function(err, response) {
-    if (err) {
-      console.log('Error in server patch')
-    } else {
-      console.log('Review count updated')
-    }
-  });
-});
-
-
-//build out an app.post
-app.post('/shoes', (req, res) => {
-  //post to sq db
-})
-
+// app.patch('/shoes/:shoeID', (req, res) => {
+//   Shoes.findOneAndUpdate({id: res.id}, { $inc: {review_count:1}}, function(err, response) {
+//     if (err) {
+//       console.log('Error in server patch')
+//     } else {
+//       console.log('Review count updated')
+//     }
+//   });
+// });
 
 //this is Bill's data
 app.get('/looks/:id', (req,res) => {
