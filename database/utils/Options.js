@@ -5,6 +5,8 @@ let short_descOptions = ['DAILY 2.0 SHOES MADE FOR YOU.', 'ENERGY, FROM THE GROU
 let typeOptions = ['Performance', 'Essentials', 'Originals'];
 
 
-module.exports.nameOptions = nameOptions;
-module.exports.short_descOptions = short_descOptions;
-module.exports.typeOptions = typeOptions;
+module.exports = {
+  nameOptions,
+  short_descOptions,
+  typeOptions
+}
