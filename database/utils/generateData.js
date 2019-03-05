@@ -6,7 +6,7 @@ const {nameOptions, short_descOptions, typeOptions} = require('./Options.js');
 const totalShoes = 10000000;
 let i = 1;
 
-const shoeStream = fs.createWriteStream('./database/utils/shoeData.csv');
+const shoeStream = fs.createWriteStream('./database/utils/shoeDataTest.csv');
 
 console.time('runtime');
 
@@ -14,7 +14,7 @@ function writeTenMillionShoes() {
   while (i <= totalShoes) {
     let id = i;
     let name = nameOptions[Math.floor(Math.random() * nameOptions.length)];
-    let img_url = 'https://loremflickr.com/295/295/shoes?random=' + i;
+    let img_url = 'https://loremflickr.com/295/295/shoes?random=';
     let short_desc = short_descOptions[Math.floor(Math.random() * short_descOptions.length)];
     let long_desc = faker.lorem.sentence();
     let type = typeOptions[Math.floor(Math.random() * typeOptions.length)];
