@@ -43,4 +43,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  externals: {
+    newrelic: true
+  }
 };

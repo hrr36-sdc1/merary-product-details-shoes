@@ -16,7 +16,7 @@
 --   details VARCHAR (1000)
 -- );
 
--- \copy shoes(id, name, img_url, short_desc, long_desc, type, price, rating, review_count, details) from '...[direct path taken out]/database/utils/shoeDataTest.csv' delimiter ',';
+-- \copy shoes(id, name, img_url, short_desc, long_desc, type, price, rating, review_count, details) from '/Users/blancamartinezcobian/Desktop/CODING/HR-remote/SDC/product-details/database/utils/shoeDataTest.csv' delimiter ',';
 
 -- CREATE INDEX ON shoes (id);
 

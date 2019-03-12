@@ -1,37 +1,37 @@
 module.exports = {
-  user: 'root',
-  pw: '',
+  user: 'postgres',
+  pw: 'Estela#1971',
   "development": {
-    "user": "root",
-    "password": "",
-    "database": "fasttrack",
+    "user": "postgres",
+    "password": "Estela#1971",
+    "database": "postgres",
     "host": "localhost",
-    "dialect": "mysql",
+    "dialect": "postgres",
     "define": {
       "timestamps": false
   },
   "operatorsAliases": false
   },
-  "test": {
-    "user": "root",
-    "password": "",
-    "database": "fasttrack",
-    "host": "localhost",
-    "dialect": "mysql",
-    "define": {
-      "timestamps": false
-  },
-  "operatorsAliases": false
-  },
-  "production": {
-    "username": "root",
-    "password": "",
-    "database": "fasttrack",
-    "host": "localhost",
-    "dialect": "mysql",
-    "define": {
-      "timestamps": false
-  },
-  "operatorsAliases": false
-  }
+  // "test": {
+  //   "user": "root",
+  //   "password": "",
+  //   "database": "fasttrack",
+  //   "host": "localhost",
+  //   "dialect": "mysql",
+  //   "define": {
+  //     "timestamps": false
+  // },
+  // "operatorsAliases": false
+  // },
+  // "production": {
+  //   "username": "root",
+  //   "password": "",
+  //   "database": "fasttrack",
+  //   "host": "localhost",
+  //   "dialect": "mysql",
+  //   "define": {
+  //     "timestamps": false
+  // },
+  // "operatorsAliases": false
+  // }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import $ from 'jquery';
 import Topbar from './Navbar/Topbar';
 import Likes from './Also-Like/Likes';
 import Looks from './Complete-Look/Looks';
@@ -24,64 +24,86 @@ class App extends Component {
     this.descClick = this.descClick.bind(this);
     this.specClick = this.specClick.bind(this);
     this.addToCart = this.addToCart.bind(this);
-    this.getOne = this.getOne.bind(this);
-    this.getShares = this.getShares.bind(this);
+    this.get = this.get.bind(this);
+    this.addAShoe = this.addAShoe.bind(this);
+    this.onUpdateSubmit = this.onUpdateSubmit.bind(this);
+    this.onDeleteSubmit = this.onDeleteSubmit.bind(this);
   }
 
   componentDidMount() {
-    const id = Math.floor(Math.random() * (101));
-    this.getOne(11);
+    this.get();
+    this.addAShoe();
+    this.onUpdateSubmit();
+    this.onDeleteSubmit();
   }
 
-  getAll() {
-    axios.get('/shoes')
-      .then(shoes => {
-        shoes = shoes.data;
-        this.setState({shoes});
+  get() {
+    let id = Math.floor(Math.random()* 1000000);
+        $.ajax({
+      type: 'GET',
+      url: '/shoes/' + id,
+      success: (shoes => {
+        this.setState({
+          shoes: shoes
+        })
+        console.log(shoes)
+      }),
+      error: (err => {
+        console.log('this is an error in the get request', err)
       })
-      .catch(err => {
-        console.log('ERROR: ', err);
-      })
-  }
-
-  getOne(id) {
-    axios.get(`http://localhost:8001/shoes/${id}`)
-    .then( shoe => {
-      shoe = shoe.data;
-      this.getLooks(id);
-      this.getShares(id);
-      this.getAll();
-      this.setState({
-        details: shoe.details.split(';'),
-        shoe,
-        desc: true,
-        spec: false,
-      });
-    })
-    .catch( err => {
-      console.log('ERROR: ', err);
     })
   }
 
-  getLooks(id) {
-    axios.get(`http://localhost:8001/looks/${id}`)
-    .then( looks => {
-      looks = looks.data;
-      this.setState({ looks });
-    })
-    .catch( err => {
-      console.log('ERROR: ', err);
+
+  addAShoe() {
+    $.ajax({
+      type: 'POST',
+      url: '/postshoes/10000001',
+      data: {
+        id: '10000001',
+        name: 'Merary!',
+        img_url: "https://s3-us-west-1.amazonaws.com/adidas-shoe/14.jpg",
+        short_desc: 'Good',
+        long_desc:  'Even better',
+        price: '120',
+        rating: '5',
+        review_count: '15',
+        details: 'Super fast shoe!'
+      },
+      success: function(results) {
+        console.log(results, 'post req success');
+      },
+      error: function(results) {
+        console.log('error in post req')
+      }
     })
   }
 
-  getShares(id) {
-    axios.get(`http://localhost:8001/shares/${id}`)
-    .then( shares => {
-      shares = shares.data;
-      this.setState({ shares });
+  onUpdateSubmit() {
+    $.ajax({
+      type: 'PUT',
+      url: '/shoes/10000001' ,
+      success: function(results) {
+        console.log(results, 'put req success');
+      },
+      error: function(results) {
+        console.log('error in put req')
+      }
     })
-    .catch( err => {
-      console.log('ERROR: ', err);
+  }
+
+  onDeleteSubmit() {
+    let id = Math.floor(Math.random()* 1000000);
+    console.log(id)
+    $.ajax({
+      type: 'DELETE',
+      url: '/shoes/' + id,
+      success: function(results) {
+        console.log(results, 'delete req success');
+      },
+      error: function(results) {
+        console.log('error in delete req')
+      }
     })
   }
 
@@ -123,6 +145,9 @@ class App extends Component {
         </div>
         <Likes shoes={this.state.shoes} handleClick={this.getOne} />
         <Share shares={this.state.shares} />
+        <button className="update shoe" onClick={this.onUpdateSubmit}>update shoe</button>
+         <button className="delete shoe" onClick={this.onDeleteSubmit}>delete shoe</button>
+         <button className="add shoe" onClick={this.addAShoe}>add shoe</button>
       </div>
     );
   }
